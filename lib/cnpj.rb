@@ -56,8 +56,8 @@ class CNPJ
   end
 
   def valid?
-    return unless stripped =~ VALIDATION_SIZE_REGEX
-    return if BLACKLIST.include?(stripped)
+    return false unless stripped =~ VALIDATION_SIZE_REGEX
+    return false if BLACKLIST.include?(stripped)
 
     digits = numbers[0...12]
     digits << VerifierDigit.generate(digits)

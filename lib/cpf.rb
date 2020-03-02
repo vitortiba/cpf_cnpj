@@ -58,8 +58,8 @@ class CPF
   end
 
   def valid?
-    return unless stripped =~ VALIDATION_SIZE_REGEX
-    return if BLACKLIST.include?(stripped)
+    return false unless stripped =~ VALIDATION_SIZE_REGEX
+    return false if BLACKLIST.include?(stripped)
 
     digits = numbers[0...9]
     digits << VerifierDigit.generate(digits)
